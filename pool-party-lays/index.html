@@ -186,6 +186,21 @@ button{font:inherit;color:inherit}
 .sz{font:400 2.4rem/1 var(--f-display)}
 
 
+/* Confirmação */
+.rsvp-form{display:grid;gap:16px;margin-top:18px}
+.fld{display:grid;gap:6px}
+.fld .k{font:700 .76rem var(--f-body);letter-spacing:.14em;text-transform:uppercase}
+.fld input{width:100%;min-height:52px;padding:10px 16px;border:3px solid var(--ink);border-radius:16px;background:#fff;color:var(--ink);font:600 1.1rem var(--f-body);box-shadow:4px 4px 0 var(--ink)}
+.fld input::placeholder{color:#8a7a92}
+.fld input:focus-visible{outline:4px dashed var(--ink);outline-offset:3px}
+.stepper{display:inline-flex;align-items:center;width:max-content;border:3px solid var(--ink);border-radius:999px;background:#fff;box-shadow:4px 4px 0 var(--ink);overflow:hidden}
+.stepper button{width:52px;height:50px;border:0;background:var(--green);font:400 1.6rem/1 var(--f-display);cursor:pointer}
+.stepper button:first-child{border-right:3px solid var(--ink)}
+.stepper button:last-child{border-left:3px solid var(--ink)}
+.stepper output{min-width:64px;text-align:center;font:400 1.7rem/1 var(--f-display);font-variant-numeric:tabular-nums}
+.rsvp-err{font-weight:700;background:#fff;border:3px solid var(--ink);border-radius:12px;padding:8px 12px}
+.rsvp .btn{justify-self:start}
+
 /* Faixa */
 .band{margin:0 -16px;background:var(--ink);border-block:4px solid #fff;rotate:-2deg;overflow:hidden}
 .track{display:flex;width:max-content;animation:tick 26s linear infinite}
@@ -397,6 +412,7 @@ button{font:inherit;color:inherit}
     <p class="hand tip">Dica de look: capriche no neon rosa, verde ou laranja!</p>
   </section>
 
+  <div class="grid2">
     <section class="card pop" style="--i:5" aria-labelledby="giftTitle">
       <span class="lab">Sugestão de presente</span>
       <h2 class="h2" id="giftTitle">Quer presentear?</h2>
@@ -406,6 +422,32 @@ button{font:inherit;color:inherit}
         <div class="tag-w outl"><div class="tag p"><span class="k">Calçado</span><span class="sz" data-f="calcado">36/37</span></div></div>
       </div>
     </section>
+
+    <section class="card c-orange rsvp pop" style="--i:6" aria-labelledby="rsvpTitle">
+      <svg class="deco" style="--r:14deg;top:-26px;right:-14px;width:58px;height:58px;color:var(--green)" aria-hidden="true"><use href="#ring"/></svg>
+      <span class="lab">Confirme sua presença</span>
+      <h2 class="h2" id="rsvpTitle">Vai mergulhar com a gente?</h2>
+      <p class="lead">Preencha e toque no botão. A confirmação abre pronta no WhatsApp, é só enviar.</p>
+      <form class="rsvp-form" id="rsvpForm" novalidate>
+        <label class="fld" for="rsvpNome"><span class="k">Seu nome</span>
+          <input id="rsvpNome" name="nome" type="text" autocomplete="name" placeholder="Ex.: Ana Souza" required>
+        </label>
+        <div class="fld">
+          <span class="k" id="qtdLab">Quantas pessoas vêm?</span>
+          <div class="stepper" role="group" aria-labelledby="qtdLab">
+            <button type="button" id="qtdMenos" aria-label="Diminuir">−</button>
+            <output id="qtd" aria-live="polite">1</output>
+            <button type="button" id="qtdMais" aria-label="Aumentar">+</button>
+          </div>
+        </div>
+        <p class="rsvp-err" id="rsvpErr" role="alert" hidden>Escreva seu nome para confirmar.</p>
+        <button class="btn w" type="submit">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20l1.3-4A8 8 0 1 1 8 18.7z" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linejoin="round"/><path d="M9 10.5c.5 1.6 1.9 3 3.5 3.5l1.2-1 1.8.8c-.2 1.2-1 1.9-2.2 1.7-2.8-.4-5-2.6-5.4-5.4-.2-1.2.5-2 1.7-2.2l.8 1.8z" fill="currentColor"/></svg>
+          Confirmar no WhatsApp
+        </button>
+      </form>
+    </section>
+  </div>
 
   <div class="band pop" style="--i:7" aria-label="Avisos da festa">
     <div class="track" id="track">
@@ -437,7 +479,8 @@ const FESTA = {
   endereco: "R. Rita Maria de Queiroz Ferreira, 99 - Col - Antônio Justa, Maranguape - CE, 61903-170",
   mapsBusca: "Espaço BM, R. Rita Maria de Queiroz Ferreira, 99, Antônio Justa, Maranguape - CE, 61903-170",
   roupas: "13/14",
-  calcado: "36/37"
+  calcado: "36/37",
+  whatsapp: "558586754611"               // número que recebe as confirmações (+55 85 8675-4611)
 };
 /* ==================================================== */
 
@@ -642,6 +685,30 @@ $('#copyBtn').addEventListener('click', async e => {
   catch (err) { b.textContent = 'Copie o texto acima'; }
   setTimeout(() => b.textContent = old, 2000);
 });
+
+/* Confirmação pelo WhatsApp */
+(function(){
+  const out = $('#qtd'); let n = 1;
+  const set = v => { n = Math.max(1, Math.min(20, v)); out.textContent = n; };
+  $('#qtdMenos').addEventListener('click', () => set(n-1));
+  $('#qtdMais').addEventListener('click', () => set(n+1));
+  $('#rsvpForm').addEventListener('submit', e => {
+    e.preventDefault();
+    const nome = $('#rsvpNome').value.trim();
+    if (!nome){ $('#rsvpErr').hidden = false; $('#rsvpNome').focus(); return; }
+    $('#rsvpErr').hidden = true;
+    const msg = 'Oi! 🎉 Confirmo presença na Pool Party Neon da ' + FESTA.nome + ' (' + FESTA.idade + ' anos)!\n\n'
+      + '👤 Nome: ' + nome + '\n'
+      + '👥 Pessoas: ' + n + '\n'
+      + '📅 ' + FESTA.dataCurta.replace(/^\S+\s·\s/, '') + ' às ' + FESTA.hora + '\n'
+      + '📍 ' + FESTA.local + '\n\n'
+      + 'Já separei o traje de banho! 🩱';
+    const url = 'https://wa.me/' + FESTA.whatsapp + '?text=' + encodeURIComponent(msg);
+    const w = window.open(url, '_blank', 'noopener');
+    if (!w) location.href = url;
+  });
+  $('#rsvpNome').addEventListener('input', () => { $('#rsvpErr').hidden = true; });
+})();
 
 /* Checklist */
 document.querySelectorAll('.chk').forEach(b => b.addEventListener('click', () => {
