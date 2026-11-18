@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pool Party Neon da Laís</title>
+<meta name="description" content="Convite: Pool Party Neon da Laís, 10 anos. Sábado, 09/01/2027, às 11h, no Espaço BM.">
+<meta name="theme-color" content="#ff2e93">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bagel+Fat+One&family=Fredoka:wght@400;500;600;700&family=Gochi+Hand&display=swap" rel="stylesheet">
+<style>
+:root{
+  /* Layout: envelope de correio que abre e revela uma página pop de dia de piscina, com adesivos recortados, ingresso, etiquetas e boias */
+  --pink:#ff2e93;
+  --pink-lt:#ffc2e0;
+  --green:#4dff2e;
+  --orange:#ff7a00;
+  --ink:#1b0a2a;
+  --paper:#fffafc;
+  --f-display:"Bagel Fat One","Arial Black",Impact,sans-serif;
+  --f-body:"Fredoka","Trebuchet MS",system-ui,sans-serif;
+  --f-hand:"Gochi Hand","Comic Sans MS",cursive;
+  --outline:3px 3px 0 var(--ink),-3px -3px 0 var(--ink),3px -3px 0 var(--ink),-3px 3px 0 var(--ink),0 3px 0 var(--ink),3px 0 0 var(--ink),0 -3px 0 var(--ink),-3px 0 0 var(--ink);
+}
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%;background:var(--pink);color:var(--ink);color-scheme:light;overflow-x:clip}
+body{font-family:var(--f-body);font-size:1.05rem;line-height:1.45;-webkit-font-smoothing:antialiased}
+[hidden]{display:none!important}
+p{margin:0}
+:focus-visible{outline:4px dashed var(--ink);outline-offset:5px;border-radius:8px}
+button{font:inherit;color:inherit}
+
+/* ---------- Fundo ---------- */
+.bg{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden;background:
+  radial-gradient(circle at 2px 2px,rgba(255,255,255,.28) 2px,transparent 2.6px) 0 0/18px 18px,
+  radial-gradient(120% 70% at 50% -10%,#ff74b8,transparent 60%),
+  var(--pink)}
+.wv{position:absolute;left:0;right:0;height:90px;background-repeat:repeat-x;background-size:600px 90px;animation:wave 16s linear infinite}
+.wv.g{bottom:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 90'%3E%3Cpath d='M0 40 Q75 0 150 40 T300 40 T450 40 T600 40 V90 H0Z' fill='%234dff2e' stroke='%231b0a2a' stroke-width='4'/%3E%3C/svg%3E")}
+.wv.o{bottom:-34px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 90'%3E%3Cpath d='M0 40 Q75 0 150 40 T300 40 T450 40 T600 40 V90 H0Z' fill='%23ff7a00' stroke='%231b0a2a' stroke-width='4'/%3E%3C/svg%3E");animation-duration:11s;animation-direction:reverse}
+.bubble{position:absolute;bottom:-30px;border-radius:50%;border:2px solid rgba(255,255,255,.8);background:radial-gradient(circle at 30% 30%,rgba(255,255,255,.7),rgba(255,255,255,.05) 60%);animation:rise linear infinite}
+@keyframes wave{to{background-position-x:600px}}
+@keyframes rise{to{transform:translateY(-110vh) translateX(var(--sway,20px))}}
+
+/* ---------- Peças comuns ---------- */
+.shp{position:absolute;inset:0;width:100%;height:100%;z-index:-1;overflow:visible}
+.shape{position:relative;isolation:isolate;display:grid;place-items:center;text-align:center}
+.deco{position:absolute;z-index:1;pointer-events:none;animation:bob 4s ease-in-out infinite;filter:drop-shadow(4px 4px 0 var(--ink))}
+@keyframes bob{0%,100%{transform:translateY(0) rotate(var(--r,0deg))}50%{transform:translateY(-12px) rotate(calc(var(--r,0deg) + 8deg))}}
+@keyframes spin{to{transform:rotate(360deg)}}
+.lab{display:inline-block;font:700 .76rem/1 var(--f-body);letter-spacing:.16em;text-transform:uppercase;background:var(--ink);color:var(--green);padding:7px 11px;border-radius:999px}
+.h2{font-family:var(--f-display);font-weight:400;font-size:clamp(2rem,8.5vw,2.9rem);line-height:1;margin:14px 0 10px;text-wrap:balance}
+.lead{font-size:1.12rem;max-width:44ch}
+.hand{font-family:var(--f-hand);font-size:1.45rem;line-height:1.15}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:52px;padding:12px 22px;border:3px solid var(--ink);border-radius:999px;background:var(--ink);color:#fff;font:700 1rem/1.1 var(--f-body);text-decoration:none;box-shadow:5px 5px 0 var(--orange);cursor:pointer;transition:transform .15s,box-shadow .15s}
+.btn:hover{transform:translate(-2px,-2px);box-shadow:7px 7px 0 var(--orange)}
+.btn:active{transform:translate(3px,3px);box-shadow:2px 2px 0 var(--orange)}
+.btn.w{background:#fff;color:var(--ink);box-shadow:5px 5px 0 var(--ink)}
+.btn.w:hover{box-shadow:7px 7px 0 var(--ink)}
+.btn.g{background:var(--green);color:var(--ink);box-shadow:5px 5px 0 var(--ink)}
+.btn[aria-disabled="true"],.btn:disabled{opacity:.5;pointer-events:none;box-shadow:none}
+.btn svg{width:20px;height:20px;flex:none}
+.row{display:flex;flex-wrap:wrap;gap:14px}
+
+/* ---------- Capa: envelope ---------- */
+.cover{position:relative;z-index:2;min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px;padding:40px 16px 120px;text-align:center;transition:opacity .6s ease,transform .6s ease}
+.cover.leave{opacity:0;transform:scale(1.12)}
+.cover>.cv-kicker,.cover>.cv-title,.cover>.env,.cover>.cv-tap{position:relative;z-index:3}
+.cv-kicker{font-family:var(--f-hand);font-size:1.4rem;background:var(--green);border:3px solid var(--ink);border-radius:999px;padding:4px 18px;box-shadow:4px 4px 0 var(--ink);rotate:-4deg}
+.cv-title{font-family:var(--f-display);font-weight:400;font-size:clamp(2.5rem,12vw,4.4rem);line-height:.95;color:#fff;text-shadow:var(--outline),7px 7px 0 var(--ink);margin:0;text-wrap:balance}
+.env{position:relative;width:min(84vw,340px);aspect-ratio:340/234;margin-top:60px;padding:0;border:0;background:none;cursor:pointer;perspective:900px;animation:wobble 3.2s ease-in-out infinite;filter:drop-shadow(8px 8px 0 var(--ink))}
+@keyframes wobble{0%,100%{transform:rotate(-2deg) translateY(0)}50%{transform:rotate(1.5deg) translateY(-8px)}}
+.env.open{animation:none}
+.env-back{position:absolute;inset:0;z-index:0;background:#d95800;border:3px solid var(--ink);border-radius:6px}
+.env-card{position:absolute;left:7%;right:7%;top:5%;height:90%;z-index:2;background:var(--paper);border:3px solid var(--ink);border-radius:12px;display:flex;flex-direction:column;align-items:center;padding-top:7%;gap:2px;transition:transform .85s cubic-bezier(.2,.9,.25,1.2) .45s}
+.ec-top{font:700 .72rem var(--f-body);letter-spacing:.16em;text-transform:uppercase;background:var(--pink);color:#fff;padding:4px 10px;border-radius:999px}
+.ec-name{font-family:var(--f-display);font-size:2.6rem;line-height:1;color:var(--pink);text-shadow:3px 3px 0 var(--ink)}
+.ec-age{font-family:var(--f-hand);font-size:1.3rem}
+.env-pocket,.env-flap{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.env-pocket{z-index:3}
+.env-flap{z-index:4;transform-origin:50% 0;transition:transform .55s ease,z-index 0s .27s}
+.env.open .env-flap{transform:rotateX(180deg);z-index:1}
+.env-seal{position:absolute;z-index:5;left:50%;top:58%;width:27%;aspect-ratio:1;transform:translate(-50%,-50%) rotate(-8deg);transition:transform .35s ease;font:400 2.3rem/1 var(--f-display)}
+.env.open .env-seal{transform:translate(-50%,-50%) scale(0) rotate(-120deg)}
+.env-to{position:absolute;z-index:5;left:9%;bottom:9%;font-family:var(--f-hand);font-size:1.25rem;color:var(--ink);rotate:-4deg}
+.env-stamp{position:absolute;z-index:5;right:6%;bottom:7%;width:22%;aspect-ratio:1;font:400 1.15rem/1 var(--f-display);rotate:10deg}
+.env.open .env-card{transform:translateY(-60%) rotate(-2deg)}
+.cv-tap{display:inline-flex;align-items:center;gap:10px;font:700 1.05rem var(--f-body);background:#fff;border:3px solid var(--ink);border-radius:999px;padding:10px 20px;box-shadow:4px 4px 0 var(--ink);cursor:pointer;animation:nudge 1.6s ease-in-out infinite}
+@keyframes nudge{50%{transform:translateY(-5px)}}
+
+/* ---------- Página ---------- */
+.main{position:relative;z-index:2;max-width:1080px;margin:0 auto;padding:24px 16px 150px;display:grid;gap:44px}
+.grid2{display:grid;gap:44px}
+@media (min-width:860px){.grid2{grid-template-columns:1fr 1fr;align-items:start}}
+.pop{animation:popin .7s cubic-bezier(.2,.9,.3,1.3) backwards;animation-delay:calc(var(--i,0)*90ms)}
+@keyframes popin{from{opacity:0;transform:translateY(40px) scale(.94) rotate(3deg)}}
+
+/* Hero */
+.hero{position:relative;text-align:center;display:grid;justify-items:center;gap:4px;padding:18px 0 6px}
+.sticker{display:inline-block;background:var(--green);border:3px solid var(--ink);border-radius:999px;padding:6px 18px;font:700 1rem var(--f-body);box-shadow:4px 4px 0 var(--ink);rotate:-3deg}
+.title{margin:14px 0 0;font-family:var(--f-display);font-weight:400;line-height:.84;font-size:clamp(4.2rem,22vw,9rem);color:#fff;display:grid;justify-items:center;text-shadow:var(--outline),9px 9px 0 var(--ink);outline:0}
+.title .t2{color:var(--orange)}
+.title .neon{font-size:.6em;color:var(--green);rotate:-6deg;margin-top:.06em;text-shadow:var(--outline),6px 6px 0 var(--ink),0 0 34px var(--green);animation:flick 5s infinite}
+@keyframes flick{0%,90%,94%,100%{opacity:1}91%{opacity:.55}93%{opacity:.8}}
+.da{font-family:var(--f-hand);font-size:2rem;margin-top:16px;color:#fff;text-shadow:2px 2px 0 var(--ink)}
+.name{font-family:var(--f-display);font-size:clamp(4rem,20vw,7.5rem);line-height:.9;color:var(--green);text-shadow:var(--outline),8px 8px 0 var(--ink);rotate:-2deg}
+.age{display:flex;align-items:center;justify-content:center;gap:2px;margin-top:4px;font-family:var(--f-display);font-size:clamp(5rem,26vw,9rem);line-height:1;color:#fff;text-shadow:var(--outline),8px 8px 0 var(--ink)}
+.age .ring{width:.92em;height:.92em;color:var(--orange);filter:drop-shadow(6px 6px 0 var(--ink));animation:spin 10s linear infinite}
+.age .anos{font:700 1.4rem var(--f-body);text-shadow:none;color:var(--ink);background:#fff;border:3px solid var(--ink);border-radius:999px;padding:4px 14px;box-shadow:4px 4px 0 var(--ink);rotate:10deg;margin-left:8px}
+.chips{list-style:none;display:flex;flex-wrap:wrap;justify-content:center;gap:12px;padding:0;margin:20px 0 0}
+.chips li{background:#fff;border:3px solid var(--ink);border-radius:999px;padding:8px 18px;font:700 1.08rem var(--f-body);box-shadow:4px 4px 0 var(--ink)}
+.chips li:nth-child(1){background:var(--orange);rotate:-3deg}
+.chips li:nth-child(2){background:var(--green);rotate:2deg}
+.chips li:nth-child(3){rotate:-1deg}
+
+/* Cartões */
+.card{position:relative;background:var(--paper);border:3px solid var(--ink);border-radius:28px;box-shadow:9px 9px 0 var(--ink);padding:28px 22px}
+.card.c-green{background:var(--green)}
+.card.c-orange{background:var(--orange)}
+.card.c-pink{background:var(--pink-lt)}
+@media (min-width:560px){.card{padding:32px 30px}}
+
+/* Contagem */
+.cd{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:8px}
+.cd div{background:#fff;border:3px solid var(--ink);border-radius:18px;padding:12px 2px 9px;text-align:center;box-shadow:4px 4px 0 var(--ink)}
+.cd b{display:block;font:400 clamp(1.8rem,9vw,2.7rem)/1 var(--f-display);font-variant-numeric:tabular-nums}
+.cd span{font:700 .72rem var(--f-body);letter-spacing:.1em;text-transform:uppercase}
+.cd b.bump{animation:bump .35s ease}
+@keyframes bump{40%{transform:scale(1.18) rotate(-4deg)}}
+.cd-done{font-family:var(--f-display);font-size:2rem;margin-top:8px}
+
+/* Ingresso (quando) */
+.outl{filter:drop-shadow(3px 0 0 var(--ink)) drop-shadow(-3px 0 0 var(--ink)) drop-shadow(0 3px 0 var(--ink)) drop-shadow(0 -3px 0 var(--ink)) drop-shadow(8px 8px 0 var(--ink))}
+.ticket{position:relative;background:var(--orange);border-radius:26px;padding:28px 24px;
+  -webkit-mask:radial-gradient(circle 18px at 0 62%,#0000 98%,#000) left/51% 100% no-repeat,radial-gradient(circle 18px at 100% 62%,#0000 98%,#000) right/51% 100% no-repeat;
+  mask:radial-gradient(circle 18px at 0 62%,#0000 98%,#000) left/51% 100% no-repeat,radial-gradient(circle 18px at 100% 62%,#0000 98%,#000) right/51% 100% no-repeat}
+.date{display:flex;align-items:center;gap:14px;margin:14px 0 4px}
+.date .d{font:400 clamp(5rem,24vw,6.6rem)/.85 var(--f-display);color:#fff;text-shadow:var(--outline),5px 5px 0 var(--ink)}
+.date .m{font:700 1.45rem/1.1 var(--f-body)}
+.date .m small{display:block;font:400 1.4rem var(--f-hand)}
+.perf{border-top:3px dashed var(--ink);margin:18px -24px 16px}
+.time{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:18px}
+.time b{font:400 3rem/1 var(--f-display);color:#fff;text-shadow:var(--outline),4px 4px 0 var(--ink)}
+
+/* Endereço */
+.where-name{font-family:var(--f-display);font-size:clamp(2.2rem,9vw,3rem);line-height:1;margin:14px 0 8px}
+.reveal{display:grid;grid-template-rows:0fr;transition:grid-template-rows .6s ease}
+.reveal.show{grid-template-rows:1fr}
+.reveal-in{min-height:0;overflow:hidden;visibility:hidden;transition:visibility 0s .6s}
+.reveal.show .reveal-in{visibility:visible;transition-delay:0s}
+.addr{margin-top:20px;display:grid;gap:14px;padding-bottom:10px}
+.addr-txt{font:600 1.12rem/1.35 var(--f-body);background:var(--pink-lt);border:3px solid var(--ink);border-radius:18px;padding:14px 16px}
+.mapbox{position:relative;aspect-ratio:4/3;border:3px solid var(--ink);border-radius:20px;overflow:hidden;background:
+  repeating-linear-gradient(45deg,#ffe3f1 0 14px,#fff 14px 28px)}
+.mapbox::before{content:"Carregando o mapa...";position:absolute;inset:0;display:grid;place-items:center;font:600 1rem var(--f-body)}
+.mapbox iframe{position:relative;width:100%;height:100%;border:0}
+
+/* Traje de banho */
+.swim{padding-top:34px}
+.burst{position:absolute;top:-46px;right:-12px;width:136px;height:136px;rotate:12deg;font:400 1.02rem/1.05 var(--f-display);padding:26px;z-index:2;animation:pulse 2.4s ease-in-out infinite}
+@keyframes pulse{50%{scale:1.07}}
+.swim .h2{max-width:11ch}
+.must{display:flex;gap:14px;align-items:center;background:#fff;border:3px solid var(--ink);border-radius:20px;padding:14px;margin:16px 0 18px;box-shadow:5px 5px 0 var(--ink)}
+.must svg{width:62px;height:62px;flex:none}
+.must b{display:block;font:400 1.35rem/1.05 var(--f-display)}
+.checklist{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.chk{width:100%;display:flex;align-items:center;gap:12px;text-align:left;background:#fff;border:3px solid var(--ink);border-radius:16px;padding:10px 14px;font:600 1.05rem var(--f-body);cursor:pointer;transition:transform .15s,background .2s}
+.chk:hover{transform:translateX(4px)}
+.chk .box{width:26px;height:26px;flex:none;border:3px solid var(--ink);border-radius:8px;background:#fff;display:grid;place-items:center}
+.chk .box svg{width:16px;height:16px;opacity:0;transform:scale(.3);transition:.2s}
+.chk[aria-pressed="true"]{background:var(--green)}
+.chk[aria-pressed="true"] .box svg{opacity:1;transform:none}
+.chk .req{margin-left:auto;font:700 .68rem var(--f-body);letter-spacing:.1em;text-transform:uppercase;background:var(--pink);color:#fff;padding:5px 8px;border-radius:999px;white-space:nowrap}
+.tip{margin-top:16px}
+
+/* Presentes */
+.tags{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:22px;margin-top:18px}
+.tag{position:relative;background:var(--green);clip-path:polygon(20% 0,100% 0,100% 100%,20% 100%,0 50%);padding:16px 16px 16px 26%;min-height:112px;display:grid;align-content:center}
+.tag.p{background:var(--pink)}
+.tag.p .sz{color:#fff;text-shadow:var(--outline),3px 3px 0 var(--ink)}
+.tag::before{content:"";position:absolute;left:10%;top:50%;width:16px;height:16px;margin-top:-8px;border-radius:50%;background:var(--paper);border:3px solid var(--ink)}
+.tag-w:nth-child(1){rotate:-3deg}.tag-w:nth-child(2){rotate:2deg}
+.tag .k{font:700 .76rem var(--f-body);letter-spacing:.14em;text-transform:uppercase}
+.sz{font:400 2.4rem/1 var(--f-display)}
+
+
+/* Faixa */
+.band{margin:0 -16px;background:var(--ink);border-block:4px solid #fff;rotate:-2deg;overflow:hidden}
+.track{display:flex;width:max-content;animation:tick 26s linear infinite}
+.set{display:flex;align-items:center}
+.set span{padding:12px 18px;font:400 1.5rem/1 var(--f-display);white-space:nowrap;color:var(--green)}
+.set span:nth-child(4n+3){color:var(--orange)}
+.set span:nth-child(even){color:#fff;font-size:1.1rem}
+@keyframes tick{to{transform:translateX(-50%)}}
+
+.foot{text-align:center;display:grid;justify-items:center;gap:18px}
+.foot .hand{color:#fff;text-shadow:2px 2px 0 var(--ink);font-size:1.8rem;max-width:22ch}
+
+/* Bolhas do envelope */
+.bubfx{position:fixed;inset:0;z-index:25;pointer-events:none;overflow:hidden}
+.bub{position:absolute;border-radius:50%;border:2.5px solid #fff;background:radial-gradient(circle at 32% 30%,rgba(255,255,255,.95) 0 12%,rgba(255,255,255,.25) 13%,rgba(255,255,255,.06) 62%);box-shadow:0 0 12px rgba(255,255,255,.6),inset -4px -6px 10px rgba(77,255,46,.35);animation:bubUp var(--dur,2s) cubic-bezier(.3,.6,.4,1) backwards}
+.bub.pk{box-shadow:0 0 12px rgba(255,255,255,.6),inset -4px -6px 10px rgba(255,46,147,.45)}
+.bub.or{box-shadow:0 0 12px rgba(255,255,255,.6),inset -4px -6px 10px rgba(255,122,0,.45)}
+@keyframes bubUp{
+  0%{transform:translate(0,0) scale(.2);opacity:0}
+  12%{opacity:1}
+  85%{transform:translate(var(--dx),var(--dy)) scale(1);opacity:1}
+  100%{transform:translate(var(--dx),var(--dy)) scale(1.6);opacity:0}}
+.bub{opacity:0}
+
+/* Aviso para rolar */
+.scroll-hint{position:fixed;left:50%;bottom:calc(22px + env(safe-area-inset-bottom));z-index:15;transform:translateX(-50%);display:flex;align-items:center;gap:10px;padding:10px 20px 10px 14px;border:3px solid var(--ink);border-radius:999px;background:#fff;color:var(--ink);font:700 1rem var(--f-body);white-space:nowrap;box-shadow:5px 5px 0 var(--ink);cursor:pointer;transition:opacity .35s,transform .35s}
+.scroll-hint .arw{width:32px;height:32px;border-radius:50%;background:var(--green);border:3px solid var(--ink);display:grid;place-items:center;animation:arrow 1.2s ease-in-out infinite}
+.scroll-hint svg{width:16px;height:16px}
+.scroll-hint.off{opacity:0;transform:translate(-50%,30px);pointer-events:none}
+@keyframes arrow{50%{transform:translateY(5px)}}
+.hero-more{margin-top:26px;display:grid;justify-items:center;gap:4px;font-family:var(--f-hand);font-size:1.35rem;color:#fff;text-shadow:2px 2px 0 var(--ink)}
+.hero-more svg{width:34px;height:34px;animation:arrow 1.2s ease-in-out infinite;filter:drop-shadow(3px 3px 0 var(--ink))}
+
+/* Confete CSS */
+.confetti{position:fixed;inset:0;z-index:20;pointer-events:none;overflow:hidden}
+.conf{position:absolute;top:-24px;border:2px solid var(--ink);animation:fall linear forwards}
+@keyframes fall{to{transform:translateY(112vh) rotate(var(--spin,720deg))}}
+
+@media (max-width:420px){.burst{width:118px;height:118px;font-size:.9rem;top:-42px;right:-8px;padding:22px}}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .track{width:auto;flex-wrap:wrap;justify-content:center}
+  .set{flex-wrap:wrap;justify-content:center}
+  .set[aria-hidden="true"]{display:none}
+}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <symbol id="ring" viewBox="0 0 100 100">
+      <circle cx="50" cy="50" r="34" fill="none" stroke="#1b0a2a" stroke-width="30"/>
+      <circle cx="50" cy="50" r="34" fill="none" stroke="currentColor" stroke-width="23"/>
+      <circle cx="50" cy="50" r="34" fill="none" stroke="#fff" stroke-width="23" stroke-dasharray="18 35.4"/>
+      <path d="M30 36 A26 26 0 0 1 46 26" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" opacity=".9"/>
+    </symbol>
+    <symbol id="ball" viewBox="0 0 100 100">
+      <circle cx="50" cy="50" r="46" fill="#fff"/>
+      <path d="M50 50 L50 4 A46 46 0 0 1 89.84 27Z" fill="#ff2e93"/>
+      <path d="M50 50 L89.84 73 A46 46 0 0 1 50 96Z" fill="#4dff2e"/>
+      <path d="M50 50 L10.16 73 A46 46 0 0 1 10.16 27Z" fill="#ff7a00"/>
+      <circle cx="50" cy="50" r="46" fill="none" stroke="#1b0a2a" stroke-width="4"/>
+      <circle cx="50" cy="50" r="8" fill="#fff" stroke="#1b0a2a" stroke-width="4"/>
+    </symbol>
+    <symbol id="star" viewBox="0 0 24 24"><path d="M12 1.5l3.1 7 7.6.7-5.8 5 1.8 7.5L12 17.8l-6.7 3.9 1.8-7.5-5.8-5 7.6-.7z" stroke="#1b0a2a" stroke-width="1.6" stroke-linejoin="round"/></symbol>
+    <symbol id="swimsuit" viewBox="0 0 64 64">
+      <path d="M20 6v12c0 4 4 8 12 8s12-4 12-8V6l4 2v22c0 6-4 10-8 12l-2 16H26l-2-16c-4-2-8-6-8-12V8z" fill="#ff2e93" stroke="#1b0a2a" stroke-width="3" stroke-linejoin="round"/>
+      <path d="M18 34c6 4 22 4 28 0" fill="none" stroke="#4dff2e" stroke-width="4" stroke-linecap="round"/>
+      <path d="M22 42c4 3 16 3 20 0" fill="none" stroke="#ff7a00" stroke-width="4" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="tick" viewBox="0 0 16 16"><path d="M2.5 8.5l3.5 3.5 7.5-8" fill="none" stroke="#1b0a2a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  </defs>
+</svg>
+
+<div class="bg" aria-hidden="true">
+  <div class="wv o"></div>
+  <div class="wv g"></div>
+</div>
+
+<!-- ================= CAPA ================= -->
+<section class="cover" id="cover" aria-label="Envelope do convite">
+  <svg class="deco" style="--r:-12deg;bottom:14%;left:4%;width:64px;height:64px;color:var(--orange)" aria-hidden="true"><use href="#ring"/></svg>
+  <svg class="deco" style="--r:8deg;bottom:15%;right:5%;width:58px;height:58px;animation-delay:-1.5s" aria-hidden="true"><use href="#ball"/></svg>
+  <svg class="deco" style="--r:0deg;top:4%;right:8%;width:34px;height:34px;fill:var(--green);animation-delay:-2.5s" aria-hidden="true"><use href="#star"/></svg>
+
+  <p class="cv-kicker">psiu! chegou correio pra você</p>
+  <h1 class="cv-title">Você recebeu<br>um convite!</h1>
+
+  <button class="env" id="env" type="button" aria-label="Abrir o envelope do convite">
+    <span class="env-back"></span>
+    <span class="env-card" aria-hidden="true">
+      <span class="ec-top">Pool Party Neon</span>
+      <span class="ec-name" data-f="nome">Laís</span>
+      <span class="ec-age"><span data-f="idade">10</span> anos</span>
+    </span>
+    <svg class="env-pocket" viewBox="0 0 340 234" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M0 0 L170 132 L340 0 V234 H0Z" fill="#ff7a00" stroke="#1b0a2a" stroke-width="3" vector-effect="non-scaling-stroke" stroke-linejoin="round"/>
+      <path d="M0 234 L148 116 M340 234 L192 116" fill="none" stroke="#1b0a2a" stroke-width="3" vector-effect="non-scaling-stroke"/>
+    </svg>
+    <svg class="env-flap" viewBox="0 0 340 234" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M0 0 H340 L170 140 Z" fill="#ff9330" stroke="#1b0a2a" stroke-width="3" vector-effect="non-scaling-stroke" stroke-linejoin="round"/>
+    </svg>
+    <span class="env-seal shape" data-shape="wavy" data-fill="#4dff2e" data-n="12" data-amp="7" aria-hidden="true" id="sealLetter">L</span>
+    <span class="env-to" aria-hidden="true">para: você ♥</span>
+    <span class="env-stamp shape" data-shape="wavy" data-fill="#fffafc" data-n="16" data-amp="4" aria-hidden="true"><span data-f="idade">10</span></span>
+  </button>
+
+  <p class="cv-tap" id="tap" aria-hidden="true">Toque no envelope</p>
+</section>
+
+<!-- ================= CONVITE ================= -->
+<button class="scroll-hint off" id="scrollHint" type="button" hidden>
+  <span class="arw" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M3 6l5 5 5-5" fill="none" stroke="#1b0a2a" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+  Role para baixo e veja tudo
+</button>
+
+<main class="main" id="main" hidden>
+
+  <header class="hero pop" style="--i:0">
+    <svg class="deco" style="--r:-10deg;top:2%;left:-2%;width:70px;height:70px;color:var(--green)" aria-hidden="true"><use href="#ring"/></svg>
+    <svg class="deco" style="--r:10deg;top:30%;right:-3%;width:66px;height:66px;animation-delay:-2s" aria-hidden="true"><use href="#ball"/></svg>
+    <svg class="deco" style="top:58%;left:2%;width:38px;height:38px;fill:var(--orange);animation-delay:-1s" aria-hidden="true"><use href="#star"/></svg>
+    <svg class="deco" style="top:4%;right:12%;width:30px;height:30px;fill:#fff;animation-delay:-3s" aria-hidden="true"><use href="#star"/></svg>
+
+    <span class="sticker">Você está convidado(a)!</span>
+    <h1 class="title" id="headline" tabindex="-1"><span>Pool</span><span class="t2">Party</span><span class="neon">neon</span></h1>
+    <p class="da">da</p>
+    <p class="name" data-f="nome">Laís</p>
+    <div class="age" id="age" aria-label="10 anos"></div>
+    <ul class="chips">
+      <li data-f="dataCurta">Sáb · 09.01.2027</li>
+      <li><span data-f="hora">11h</span></li>
+      <li data-f="local">Espaço BM</li>
+    </ul>
+    <p class="hero-more" aria-hidden="true">tem muito mais aqui embaixo<svg viewBox="0 0 24 24"><path d="M5 8l7 8 7-8" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></svg></p>
+  </header>
+
+  <section class="card c-green pop" style="--i:1" aria-labelledby="cdTitle">
+    <span class="lab">Contagem regressiva</span>
+    <h2 class="h2" id="cdTitle">Falta pouco pro mergulho!</h2>
+    <div class="cd" id="cd">
+      <div><b id="cdD">--</b><span>dias</span></div>
+      <div><b id="cdH">--</b><span>horas</span></div>
+      <div><b id="cdM">--</b><span>min</span></div>
+      <div><b id="cdS">--</b><span>seg</span></div>
+    </div>
+    <p class="cd-done" id="cdDone" hidden>A festa já começou!</p>
+  </section>
+
+  <div class="grid2">
+    <section class="outl pop" style="--i:2" aria-labelledby="whenTitle">
+      <div class="ticket">
+        <span class="lab">Ingresso · Salve a data</span>
+        <h2 class="h2" id="whenTitle" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Quando</h2>
+        <div class="date">
+          <span class="d" data-f="dia">09</span>
+          <span class="m"><span data-f="mesAno">janeiro de 2027</span><small data-f="semana">sábado</small></span>
+        </div>
+        <div class="perf"></div>
+        <div class="time"><b data-f="hora">11h</b><span class="hand">da manhã, com sol e piscina</span></div>
+        <a class="btn" id="calLink" href="#" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="3" fill="none" stroke="currentColor" stroke-width="2.4"/><path d="M3 10h18M8 3v4M16 3v4" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>
+          Salvar na agenda
+        </a>
+      </div>
+    </section>
+
+    <section class="card pop" style="--i:3" aria-labelledby="whereTitle">
+      <span class="lab">Onde vai ser</span>
+      <h2 class="where-name" id="whereTitle" data-f="local">Espaço BM</h2>
+      <p class="lead" style="margin-bottom:18px">Toque para ver o endereço completo e o mapa até a piscina.</p>
+      <button class="btn" id="btnAddr" type="button" aria-expanded="false" aria-controls="addrPanel">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s7-6.5 7-12a7 7 0 0 0-14 0c0 5.5 7 12 7 12z" fill="none" stroke="currentColor" stroke-width="2.4"/><circle cx="12" cy="10" r="2.6" fill="currentColor"/></svg>
+        <span>Ver endereço</span>
+      </button>
+      <div class="reveal" id="addrPanel">
+        <div class="reveal-in">
+          <div class="addr">
+            <p class="addr-txt" id="addrTxt" data-f="endereco"></p>
+            <div class="mapbox" id="mapbox"></div>
+            <div class="row">
+              <a class="btn g" id="gmaps" href="#" target="_blank" rel="noopener">Abrir no Google Maps</a>
+              <a class="btn w" id="waze" href="#" target="_blank" rel="noopener">Abrir no Waze</a>
+              <button class="btn w" id="copyBtn" type="button">Copiar endereço</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <section class="card c-pink swim pop" style="--i:4" aria-labelledby="swimTitle">
+    <span class="burst shape" data-shape="burst" data-fill="#4dff2e" data-n="14" data-amp="9" aria-hidden="true">Traje de banho obrigatório!</span>
+    <span class="lab">Atenção, banhistas</span>
+    <h2 class="h2" id="swimTitle">Venha pronta pra piscina</h2>
+    <div class="must">
+      <svg aria-hidden="true"><use href="#swimsuit"/></svg>
+      <p><b>Traje de banho é obrigatório</b>A festa é na piscina. Venha com o traje de banho por baixo da roupa ou traga na bolsa.</p>
+    </div>
+    <p class="lab" style="background:#fff;color:var(--ink);border:2px solid var(--ink);margin-bottom:12px">Checklist da bolsa · toque para marcar</p>
+    <ul class="checklist">
+      <li><button class="chk" type="button" aria-pressed="false"><span class="box"><svg aria-hidden="true"><use href="#tick"/></svg></span>Traje de banho<span class="req">Obrigatório</span></button></li>
+      <li><button class="chk" type="button" aria-pressed="false"><span class="box"><svg aria-hidden="true"><use href="#tick"/></svg></span>Toalha</button></li>
+      <li><button class="chk" type="button" aria-pressed="false"><span class="box"><svg aria-hidden="true"><use href="#tick"/></svg></span>Protetor solar</button></li>
+      <li><button class="chk" type="button" aria-pressed="false"><span class="box"><svg aria-hidden="true"><use href="#tick"/></svg></span>Chinelo</button></li>
+      <li><button class="chk" type="button" aria-pressed="false"><span class="box"><svg aria-hidden="true"><use href="#tick"/></svg></span>Roupa seca para trocar</button></li>
+    </ul>
+    <p class="hand tip">Dica de look: capriche no neon rosa, verde ou laranja!</p>
+  </section>
+
+    <section class="card pop" style="--i:5" aria-labelledby="giftTitle">
+      <span class="lab">Sugestão de presente</span>
+      <h2 class="h2" id="giftTitle">Quer presentear?</h2>
+      <p class="lead">Se quiser dar um presente para a <b data-f="nome">Laís</b>, estes são os tamanhos dela.</p>
+      <div class="tags">
+        <div class="tag-w outl"><div class="tag"><span class="k">Roupas</span><span class="sz">Tam <span data-f="roupas">13/14</span></span></div></div>
+        <div class="tag-w outl"><div class="tag p"><span class="k">Calçado</span><span class="sz" data-f="calcado">36/37</span></div></div>
+      </div>
+    </section>
+
+  <div class="band pop" style="--i:7" aria-label="Avisos da festa">
+    <div class="track" id="track">
+      <div class="set">
+        <span>Pool Party Neon</span><span>✦</span><span>Laís 10 anos</span><span>✦</span><span>09.01.2027 às 11h</span><span>✦</span><span>Traje de banho obrigatório</span><span>✦</span><span>Espaço BM</span><span>✦</span>
+      </div>
+    </div>
+  </div>
+
+  <footer class="foot pop" style="--i:8">
+    <p class="hand">Te esperamos para um dia de sol, piscina e muito neon!</p>
+    <button class="btn w" id="backBtn" type="button">Ver o envelope de novo</button>
+  </footer>
+</main>
+
+<script>
+/* ============ DADOS DA FESTA: edite aqui ============ */
+const FESTA = {
+  nome: "Laís",
+  idade: "10",
+  inicio: "2027-01-09T11:00:00-03:00",   // data e hora da festa (horário de Fortaleza)
+  duracaoHoras: 4,                       // usado só no lembrete da agenda
+  dia: "09",
+  mesAno: "janeiro de 2027",
+  semana: "sábado",
+  dataCurta: "Sáb · 09.01.2027",
+  hora: "11h",
+  local: "Espaço BM",
+  endereco: "R. Rita Maria de Queiroz Ferreira, 99 - Col - Antônio Justa, Maranguape - CE, 61903-170",
+  mapsBusca: "Espaço BM, R. Rita Maria de Queiroz Ferreira, 99, Antônio Justa, Maranguape - CE, 61903-170",
+  roupas: "13/14",
+  calcado: "36/37"
+};
+/* ==================================================== */
+
+const $ = s => document.querySelector(s);
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* Textos */
+document.querySelectorAll('[data-f]').forEach(el => { const v = FESTA[el.dataset.f]; if (v) el.textContent = v; });
+$('#sealLetter').textContent = FESTA.nome.charAt(0);
+
+/* Idade com boia no lugar do zero */
+(function(){
+  const box = $('#age');
+  box.setAttribute('aria-label', FESTA.idade + ' anos');
+  [...FESTA.idade].forEach(ch => {
+    if (ch === '0') box.insertAdjacentHTML('beforeend', '<svg class="ring" aria-hidden="true"><use href="#ring"/></svg>');
+    else { const s = document.createElement('span'); s.textContent = ch; s.setAttribute('aria-hidden','true'); box.appendChild(s); }
+  });
+  box.insertAdjacentHTML('beforeend', '<span class="anos" aria-hidden="true">anos</span>');
+})();
+
+/* Formas recortadas (adesivos) */
+function poly(type, n, amp){
+  const pts = [], N = type === 'burst' ? n*2 : 144;
+  for (let i=0;i<N;i++){
+    const t = i/N*Math.PI*2;
+    const r = type === 'burst' ? (i%2 ? 46-amp : 46) : 46 - amp*(1+Math.cos(n*t))/2;
+    pts.push((50+r*Math.sin(t)).toFixed(2)+','+(50-r*Math.cos(t)).toFixed(2));
+  }
+  return pts.join(' ');
+}
+document.querySelectorAll('[data-shape]').forEach(el => {
+  const p = poly(el.dataset.shape, +el.dataset.n, +el.dataset.amp);
+  el.insertAdjacentHTML('afterbegin',
+    `<svg class="shp" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+      <polygon points="${p}" transform="translate(4 4)" fill="#1b0a2a"/>
+      <polygon points="${p}" fill="${el.dataset.fill}" stroke="#1b0a2a" stroke-width="3" vector-effect="non-scaling-stroke" stroke-linejoin="round"/>
+    </svg>`);
+});
+
+/* Links */
+const busca = FESTA.mapsBusca || FESTA.endereco;
+$('#gmaps').href = 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(busca);
+$('#waze').href = 'https://waze.com/ul?q=' + encodeURIComponent(busca) + '&navigate=yes';
+(function(){
+  const ini = new Date(FESTA.inicio), fim = new Date(ini.getTime() + FESTA.duracaoHoras*36e5);
+  const f = d => d.toISOString().replace(/[-:]/g,'').replace(/\.\d{3}/,'');
+  $('#calLink').href = 'https://calendar.google.com/calendar/render?action=TEMPLATE'
+    + '&text=' + encodeURIComponent('Pool Party Neon da ' + FESTA.nome + ' (' + FESTA.idade + ' anos)')
+    + '&dates=' + f(ini) + '/' + f(fim)
+    + '&location=' + encodeURIComponent(FESTA.local + ' - ' + FESTA.endereco)
+    + '&details=' + encodeURIComponent('Traje de banho obrigatório! Leve toalha, protetor solar e chinelo.');
+})();
+/* Contagem regressiva */
+(function(){
+  const alvo = new Date(FESTA.inicio).getTime();
+  const ids = ['cdD','cdH','cdM','cdS'].map(i => document.getElementById(i));
+  let last = [];
+  function tick(){
+    let s = Math.floor((alvo - Date.now())/1000);
+    if (s <= 0){ $('#cd').hidden = true; $('#cdDone').hidden = false; $('#cdTitle').textContent = 'É hoje!'; return false; }
+    const v = [Math.floor(s/86400), Math.floor(s%86400/3600), Math.floor(s%3600/60), s%60];
+    v.forEach((n,i) => {
+      const t = i ? String(n).padStart(2,'0') : String(n);
+      if (last[i] !== t){
+        ids[i].textContent = t;
+        if (last[i] !== undefined && !reduce){ ids[i].classList.remove('bump'); void ids[i].offsetWidth; ids[i].classList.add('bump'); }
+      }
+    });
+    last = v.map((n,i) => i ? String(n).padStart(2,'0') : String(n));
+    return true;
+  }
+  if (tick()) { const t = setInterval(() => { if (!tick()) clearInterval(t); }, 1000); }
+})();
+
+/* Bolhas */
+if (!reduce) {
+  const bg = $('.bg');
+  for (let i=0;i<14;i++){
+    const b = document.createElement('span'), s = 8 + Math.random()*22;
+    b.className = 'bubble';
+    b.style.cssText = `left:${Math.random()*100}%;width:${s}px;height:${s}px;animation-duration:${10+Math.random()*12}s;animation-delay:${-Math.random()*20}s;--sway:${(Math.random()*60-30).toFixed(0)}px`;
+    bg.appendChild(b);
+  }
+}
+
+/* Confete */
+function confete(){
+  if (reduce) return;
+  const box = document.createElement('div'); box.className = 'confetti'; box.setAttribute('aria-hidden','true');
+  const cores = ['#ff2e93','#4dff2e','#ff7a00','#ffffff'];
+  for (let i=0;i<70;i++){
+    const c = document.createElement('i'); c.className = 'conf';
+    const w = 8 + Math.random()*8, round = Math.random() < .35;
+    c.style.cssText = `left:${Math.random()*100}%;background:${cores[i%4]};width:${w}px;height:${round ? w : w*1.6}px;border-radius:${round ? '50%' : '2px'};animation-duration:${2.6+Math.random()*2.4}s;animation-delay:${Math.random()*.7}s;--spin:${(Math.random()*900+360).toFixed(0)}deg`;
+    box.appendChild(c);
+  }
+  document.body.appendChild(box);
+  setTimeout(() => box.remove(), 6500);
+}
+
+/* Som de bolhas (gerado no navegador, sem arquivo) */
+let actx;
+function somBolhas(){
+  try {
+    actx = actx || new (window.AudioContext || window.webkitAudioContext)();
+    if (actx.state === 'suspended') actx.resume();
+    const now = actx.currentTime, out = actx.createGain();
+    out.gain.value = .55; out.connect(actx.destination);
+    for (let i=0;i<22;i++){
+      const t = now + .02 + Math.pow(Math.random(),1.4)*1.6;
+      const o = actx.createOscillator(), g = actx.createGain();
+      const f = 260 + Math.random()*520;
+      o.type = 'sine';
+      o.frequency.setValueAtTime(f, t);
+      o.frequency.exponentialRampToValueAtTime(f*(2.2+Math.random()*1.2), t+.07);
+      g.gain.setValueAtTime(0, t);
+      g.gain.linearRampToValueAtTime(.35, t+.008);
+      g.gain.exponentialRampToValueAtTime(.001, t+.11);
+      o.connect(g); g.connect(out);
+      o.start(t); o.stop(t+.13);
+    }
+  } catch (e) {}
+}
+
+/* Bolhas saindo do envelope */
+function bolhas(){
+  if (reduce) return;
+  const r = env.getBoundingClientRect(), box = document.createElement('div');
+  box.className = 'bubfx'; box.setAttribute('aria-hidden','true');
+  const tipos = ['','pk','or'];
+  for (let i=0;i<40;i++){
+    const b = document.createElement('i'), s = 14 + Math.random()*46;
+    b.className = 'bub ' + tipos[i%3];
+    const x = r.left + r.width*(.15 + Math.random()*.7), y = r.top + r.height*(.3 + Math.random()*.5);
+    b.style.cssText = `left:${x - s/2}px;top:${y - s/2}px;width:${s}px;height:${s}px;--dx:${(Math.random()*260-130).toFixed(0)}px;--dy:${-(innerHeight*(.45+Math.random()*.6)).toFixed(0)}px;--dur:${(1.6+Math.random()*1.6).toFixed(2)}s;animation-delay:${(Math.random()*.9).toFixed(2)}s`;
+    box.appendChild(b);
+  }
+  document.body.appendChild(box);
+  setTimeout(() => box.remove(), 4500);
+}
+
+/* Aviso para rolar */
+const hint = $('#scrollHint');
+function hintCheck(){ if (scrollY > 140) { hint.classList.add('off'); removeEventListener('scroll', hintCheck); } }
+function mostrarHint(){
+  hint.hidden = false;
+  requestAnimationFrame(() => requestAnimationFrame(() => hint.classList.remove('off')));
+  addEventListener('scroll', hintCheck, {passive:true});
+}
+hint.addEventListener('click', () => scrollBy({top: innerHeight*.75, behavior: reduce ? 'auto' : 'smooth'}));
+
+/* Faixa */
+const clone = $('#track .set').cloneNode(true);
+clone.setAttribute('aria-hidden','true');
+$('#track').appendChild(clone);
+
+/* Abrir envelope */
+const cover = $('#cover'), main = $('#main'), env = $('#env');
+let busy = false;
+function abrir(){
+  if (busy) return; busy = true;
+  env.classList.add('open');
+  somBolhas(); bolhas();
+  setTimeout(() => cover.classList.add('leave'), reduce ? 0 : 1450);
+  setTimeout(() => {
+    cover.hidden = true; main.hidden = false; scrollTo(0,0);
+    $('#headline').focus({preventScroll:true});
+    confete();
+    setTimeout(mostrarHint, reduce ? 0 : 900);
+  }, reduce ? 0 : 2000);
+}
+env.addEventListener('click', abrir);
+$('#tap').addEventListener('click', abrir);
+$('#backBtn').addEventListener('click', () => {
+  main.hidden = true; cover.hidden = false;
+  hint.classList.add('off'); hint.hidden = true; removeEventListener('scroll', hintCheck);
+  env.classList.remove('open'); cover.classList.remove('leave');
+  busy = false; scrollTo(0,0); env.focus({preventScroll:true});
+});
+
+/* Endereço */
+const btnAddr = $('#btnAddr'), panel = $('#addrPanel');
+btnAddr.addEventListener('click', () => {
+  const open = btnAddr.getAttribute('aria-expanded') === 'true';
+  btnAddr.setAttribute('aria-expanded', String(!open));
+  panel.classList.toggle('show', !open);
+  btnAddr.lastElementChild.textContent = open ? 'Ver endereço' : 'Esconder endereço';
+  if (!open && !$('#mapbox iframe')){
+    const f = document.createElement('iframe');
+    f.title = 'Mapa do ' + FESTA.local;
+    f.loading = 'lazy';
+    f.referrerPolicy = 'no-referrer-when-downgrade';
+    f.src = 'https://www.google.com/maps?q=' + encodeURIComponent(busca) + '&output=embed';
+    $('#mapbox').appendChild(f);
+  }
+  if (!open) setTimeout(() => panel.scrollIntoView({behavior: reduce ? 'auto' : 'smooth', block:'center'}), 380);
+});
+$('#copyBtn').addEventListener('click', async e => {
+  const b = e.currentTarget, old = b.textContent;
+  try { await navigator.clipboard.writeText(FESTA.local + ' - ' + FESTA.endereco); b.textContent = 'Copiado!'; }
+  catch (err) { b.textContent = 'Copie o texto acima'; }
+  setTimeout(() => b.textContent = old, 2000);
+});
+
+/* Checklist */
+document.querySelectorAll('.chk').forEach(b => b.addEventListener('click', () => {
+  b.setAttribute('aria-pressed', String(b.getAttribute('aria-pressed') !== 'true'));
+}));
+</script>
+</body>
+</html>
